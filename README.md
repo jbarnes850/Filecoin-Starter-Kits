@@ -9,6 +9,7 @@ Welcome to the Filecoin Starter Kits repository! This project provides developer
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Starter Kits](#starter-kits)
+- [Documentation](#documentation)
 - [Quick Start Guide](#quick-start-guide)
 - [Updating Dependencies](#updating-dependencies)
 - [Repository Structure](#repository-structure)
@@ -34,7 +35,7 @@ Depending on the specific starter kit, you may also need:
 - [Go](https://golang.org/) (v1.16 or later)
 - [Docker](https://www.docker.com/) (latest stable version)
 
-Please refer to each starter kit's individual README for specific requirements.
+Please refer to each starter kit's individual README.md for specific requirements.
 
 ## Starter Kits
 
@@ -59,6 +60,14 @@ Each starter kit is maintained as a separate repository within the `src` directo
 5. **State Storage Starter Kit**: A kit for understanding and interacting with Filecoin's state storage.
    - Source: [state-storage-starter-kit](https://github.com/filecoin-project/state-storage-starter-kit)
    - Local path: `src/state-storage-starter-kit`
+
+## Documentation
+
+Comprehensive documentation for this project can be found in the [docs](main/docs) directory:
+
+- [Contributing Guide](/main/docs/CONTRIBUTING.md)
+- [Architecture Overview](/main/docs/ARCHITECTURE.md)
+- [Frontend Development Guide](/main/docs/FRONTEND_GUIDE.md)
 
 ## Quick Start Guide
 
@@ -97,9 +106,9 @@ Note: After updating dependencies, make sure to test each starter kit to ensure 
 
 ## Repository Structure
 
-- `main` branch: Contains this README and shared resources.
+- `main` branch: Contains all docs and shared resources.
 - `src/`: Contains each starter kit as a separate repository.
-- `common-components/`: A library of reusable frontend components (in development).
+- `component-library/`: A library of reusable frontend components (in development).
 
 ## Getting Test Tokens
 
@@ -119,7 +128,7 @@ For more detailed information about getting test tokens, including how to get to
 
 ## Contributing
 
-We welcome contributions to improve the starter kits or add new ones! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) file for guidelines.
+We welcome contributions to improve the starter kits or add new ones! Please see our [CONTRIBUTING.md](./main/docs/CONTRIBUTING.md) file for guidelines.
 
 ## Support
 
