@@ -43,7 +43,21 @@ This will show you the ethereum-style address associated with that private key a
 
 ## Fund the Deployer Address
 
-Go to the [Calibrationnet testnet faucet](https://faucet.calibration.fildev.network/), and paste in the Ethereum address from the previous step. This will send some calibration testnet FIL to the account.
+To get test tokens for the Calibration testnet:
+
+1. Ensure your MetaMask is set up for the Calibration testnet. If not, follow the [MetaMask setup guide](https://docs.filecoin.io/smart-contracts/developing-contracts/metamask-setup/).
+
+2. Copy your Ethereum address from MetaMask.
+
+3. Go to the [Calibration testnet faucet](https://faucet.calibnet.chainsafe-fil.io/).
+
+4. Click "Send Funds", paste your Ethereum address, and click "Send funds" again.
+
+5. The faucet will provide a transaction ID. You can use this to track your transaction in a block explorer.
+
+This will send some Calibration testnet FIL to your account for testing purposes.
+
+For more details on getting test tokens, including for local testnets, see the [official Filecoin documentation](https://docs.filecoin.io/smart-contracts/developing-contracts/get-test-tokens).
 
 
 ## Deploy the Contracts

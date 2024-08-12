@@ -10,7 +10,9 @@ Welcome to the Filecoin Starter Kits repository! This project provides developer
 - [Prerequisites](#prerequisites)
 - [Starter Kits](#starter-kits)
 - [Quick Start Guide](#quick-start-guide)
+- [Updating Dependencies](#updating-dependencies)
 - [Repository Structure](#repository-structure)
+- [Getting Test Tokens](#getting-test-tokens)
 - [Contributing](#contributing)
 - [Support](#support)
 
@@ -78,11 +80,42 @@ Each starter kit is maintained as a separate repository within the `src` directo
 
 4. Follow the specific setup instructions in the starter kit's README.md file.
 
+
+## Updating Dependencies
+
+To keep all starter kits up-to-date, we've provided a script to update dependencies across all projects:
+
+1. Ensure you're in the root directory of the repository.
+2. Run the update script:
+   ```
+   ./update-dependencies.sh
+   ```
+
+This script will go through each starter kit in the `src` directory and update its dependencies.
+
+Note: After updating dependencies, make sure to test each starter kit to ensure compatibility.
+
 ## Repository Structure
 
 - `main` branch: Contains this README and shared resources.
 - `src/`: Contains each starter kit as a separate repository.
 - `common-components/`: A library of reusable frontend components (in development).
+
+## Getting Test Tokens
+
+To test your smart contracts and applications on the Calibration testnet, you'll need test tokens. Here's how to get them:
+
+1. Set up MetaMask for the Calibration testnet. MetaMask uses the t4 address type, which is compatible with Solidity contracts. If you haven't set up MetaMask yet, follow the [MetaMask setup guide](https://docs.filecoin.io/smart-contracts/developing-contracts/metamask-setup/).
+
+2. Open MetaMask in your browser and copy your address.
+
+3. Go to the [Calibration testnet faucet](https://faucet.calibnet.chainsafe-fil.io/).
+
+4. Click "Send Funds", paste your address into the address field, and click "Send funds" again.
+
+5. The faucet will provide you with a transaction ID. You can use this ID in a block explorer to track the progress of your transaction.
+
+For more detailed information about getting test tokens, including how to get tokens on a local testnet, please refer to the [official Filecoin documentation](https://docs.filecoin.io/smart-contracts/developing-contracts/get-test-tokens).
 
 ## Contributing
 
