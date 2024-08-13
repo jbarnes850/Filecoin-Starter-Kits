@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { getContract } from '../../utils/ethers';
+import { RootState } from '../store/store';
+import { getContract } from '../utils/ethers';
 
 const InteractContract: React.FC = () => {
   const [value, setValue] = useState<string>('');
@@ -14,7 +14,7 @@ const InteractContract: React.FC = () => {
     }
 
     try {
-      const contract = getContract(address, abi);
+      const contract = await getContract(address, abi);
       const result = await contract.get();
       setValue(result.toString());
     } catch (error) {

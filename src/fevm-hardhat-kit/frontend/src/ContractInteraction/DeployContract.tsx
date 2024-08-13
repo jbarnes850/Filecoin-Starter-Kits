@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ethers } from 'ethers';
-import { getSigner } from '../../utils/ethers';
-import { setContract } from '../../store/contractSlice';
+import { getSigner } from '../utils/ethers';
+import { setContract } from '../store/contractSlice';
 
 const DeployContract: React.FC = () => {
   const [deploying, setDeploying] = useState(false);

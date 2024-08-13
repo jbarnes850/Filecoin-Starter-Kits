@@ -14,6 +14,41 @@ yarn install
 
 This will clone the hardhat kit onto your computer, switch directories into the newly installed kit, and install the dependencies the kit needs to work.
 
+## Frontend Application
+
+This kit now includes a React-based frontend application for interacting with the smart contracts.
+
+### Features
+
+- Connect to MetaMask wallet
+- Deploy a simple smart contract
+- Interact with deployed contracts
+- React-based user interface with TypeScript
+- State management using Redux Toolkit
+- Routing with React Router v6
+- Styling with Tailwind CSS
+
+### Getting Started with the Frontend
+
+1. Navigate to the frontend directory:
+   ```
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Start the development server:
+   ```
+   npm start
+   ```
+
+This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+For more detailed information about the frontend, please refer to the [Frontend README](./frontend/README.md).
+
 
 ## Get a Private Key
 

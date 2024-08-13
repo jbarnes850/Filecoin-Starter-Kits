@@ -1,5 +1,11 @@
 import { ethers } from 'ethers';
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 export const getProvider = () => {
   if (typeof window.ethereum !== 'undefined') {
     return new ethers.providers.Web3Provider(window.ethereum);
@@ -13,7 +19,7 @@ export const getSigner = async () => {
   return provider.getSigner();
 };
 
-export const getContract = (address: string, abi: any) => {
-  const signer = getSigner();
+export const getContract = async (address: string, abi: any) => {
+  const signer = await getSigner();
   return new ethers.Contract(address, abi, signer);
 };
