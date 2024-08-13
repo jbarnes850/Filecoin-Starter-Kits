@@ -3,6 +3,8 @@
 This document provides an overview of the architecture of the Filecoin Starter Kits project.
 
 ## Project Structure
+
+```
 filecoin-starter-kits/
 ├── docs/
 ├── shared/
@@ -15,6 +17,7 @@ filecoin-starter-kits/
 │ ├── raas-starter-kit/
 │ └── state-storage-starter-kit/
 └── README.md
+```
 
 ## Starter Kits
 
@@ -27,5 +30,3 @@ The `shared/` directory contains assets and utilities that can be used across mu
 ## Documentation
 
 The `docs/` directory contains project-wide documentation, including this architecture overview, contribution guidelines, and frontend development guide.
-
-[Add more details about the architecture as the project evolves]
