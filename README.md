@@ -39,7 +39,7 @@ Please refer to each starter kit's individual README.md for specific requirement
 
 ## Starter Kits
 
-Each starter kit is maintained as a separate repository within the `src` directory of this project. Here are the included kits:
+Each starter kit is maintained as a separate repository within the `src` directory of this project. Here are the included kits, each accompanied by a flowchart and architecture diagram to visualize the experience:
 
 1. **FEVM Hardhat Kit**: A starter kit for building smart contracts on Filecoin using Hardhat.
    - Source: [fevm-hardhat-kit](https://github.com/filecoin-project/fevm-hardhat-kit)
