@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[RaaS Starter Kit] --> B[Smart Contracts]
     A --> C[RaaS Application]

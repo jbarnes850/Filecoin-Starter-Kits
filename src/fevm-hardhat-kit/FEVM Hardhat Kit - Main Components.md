@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[FEVM Hardhat Kit] --> B[Contracts]
     A --> C[Tasks]

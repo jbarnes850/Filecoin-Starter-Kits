@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[State/Storage Integration PoC] --> B[Smart Contracts]
     A --> C[Client Application]

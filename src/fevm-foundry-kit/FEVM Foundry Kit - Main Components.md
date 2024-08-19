@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[FEVM Foundry Kit] --> B[Contracts]
     A --> C[Scripts]
@@ -21,3 +22,4 @@ graph TD
     F --> F2[OpenZeppelin Contracts]
     
     A --> F
+```

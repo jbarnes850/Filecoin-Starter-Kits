@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Start] --> B[User Submits Job]
     B --> C[API Receives Job Request]

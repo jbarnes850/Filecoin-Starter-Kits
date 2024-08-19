@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Start] --> B[Clone FEVM Hardhat Kit]
     B --> C[Install Dependencies]

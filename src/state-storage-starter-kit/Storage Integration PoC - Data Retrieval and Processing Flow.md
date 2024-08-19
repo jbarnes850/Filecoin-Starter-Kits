@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Start] --> B[Client Sends Retrieval Request]
     B --> C[DMC Emits BlobLoadReq Event]

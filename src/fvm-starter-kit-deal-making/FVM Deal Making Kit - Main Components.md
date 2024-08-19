@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[FVM Deal Making Kit] --> B[Contracts]
     A --> C[Frontend]
@@ -19,3 +20,4 @@ graph TD
     F --> F2[Boost Storage Providers]
     
     A --> F
+```

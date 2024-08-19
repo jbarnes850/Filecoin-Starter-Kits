@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Start] --> B[Prepare Data]
     B --> C[Create Deal Proposal Payload]
