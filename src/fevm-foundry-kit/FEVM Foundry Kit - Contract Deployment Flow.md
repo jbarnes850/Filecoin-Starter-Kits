@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Start] --> B[Install Foundry]
     B --> C[Clone FEVM Foundry Kit]
