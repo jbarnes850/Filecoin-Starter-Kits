@@ -1,6 +1,14 @@
 # State/Storage Integration PoC
 
-Before diving into coding, it is essential to take a few minutes to understand the concept and design behind this Proof of Concept (PoC) by reviewing the provided [specification](https://www.notion.so/State-Storage-Integration-with-Filecoin-Virtual-Machine-IPFS-263f8e13509a44ce8b2e627fe0391a9e).
+Welcome to the State/Storage Integration Proof of Concept (PoC). This project demonstrates the integration of state management with storage solutions using the Filecoin Virtual Machine and IPFS. Before diving into the code, it's crucial to understand the overall architecture and data flow of this PoC.
+
+For a comprehensive overview of the project's structure and components, please refer to the following flowcharts:
+
+- [Storage Integration PoC - Main Components](./Storage%20Integration%20PoC%20-%20Main%20Components.md): This flowchart provides a visual representation of the key components in the PoC, including smart contracts, client application, relayer, and external services.
+
+- [Storage Integration PoC - Data Retrieval and Processing Flow](./Storage%20Integration%20PoC%20-%20Data%20Retrieval%20and%20Processing%20Flow.md): This flowchart illustrates the step-by-step process of data retrieval and processing, from the client's initial request to the final data processing.
+
+These visual guides offer a clear understanding of the PoC's architecture and workflow. For more detailed information about the concept and design, please review the provided [specification](https://www.notion.so/State-Storage-Integration-with-Filecoin-Virtual-Machine-IPFS-263f8e13509a44ce8b2e627fe0391a9e).
 
 **Key Components**:
 

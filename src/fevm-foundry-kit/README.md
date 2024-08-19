@@ -1,6 +1,6 @@
 # FEVM Foundry Kit
 
-This is a template for foundry that provides the basic scaffolding for quickly getting started with new projects. 
+This is a template for foundry that provides the basic scaffolding for quickly getting started with new projects. For a comprehensive overview of the kit's structure and deployment process, refer to the flowcharts in [FEVM Foundry Kit - Main Components.md](./FEVM%20Foundry%20Kit%20-%20Main%20Components.md) and [FEVM Foundry Kit - Contract Deployment Flow.md](./FEVM%20Foundry%20Kit%20-%20Contract%20Deployment%20Flow.md).
 
 ## Download Foundry
 

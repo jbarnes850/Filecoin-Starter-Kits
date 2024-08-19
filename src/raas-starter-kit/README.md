@@ -5,9 +5,16 @@
 This repository consists of two components to build a tool to renew or replicate storage deals.
 
 * DealStatus Contract: a smart contract to query the status of storage deals.
-* eventListener.js: a demo RaaS aplication that renew, replicate, or repair storage deals when necessary.
+* eventListener.js: a demo RaaS application that renews, replicates, or repairs storage deals when necessary.
 
-Please refer to this [doc](https://www.notion.so/pl-strflt/Data-FVM-234b7f4c17624cd8b972f92806732ca9) to understand more.
+For a comprehensive overview of the kit's structure and workflow, please refer to the following flowcharts:
+
+* [RaaS Starter Kit - Main Components](RaaS%20Starter%20Kit%20-%20Main%20Components.md): Provides a visual representation of the key components in this starter kit.
+* [RaaS Starter Kit - Job Handling Flow](RaaS%20Starter%20Kit%20-%20Job%20Handling%20Flow.md): Illustrates the step-by-step process of how jobs are handled in the RaaS system.
+
+These visual guides offer a clear understanding of the kit's architecture and the job handling process.
+
+For more detailed information, please refer to this [documentation](https://www.notion.so/pl-strflt/Data-FVM-234b7f4c17624cd8b972f92806732ca9).
 
 ## Cloning the Repo
 
@@ -105,6 +112,7 @@ To innovate new use cases, you'll have to take apart your app. The RaaS applicat
 The backend stores the CID of the file and the infos used to complete the storage deal (e.g. the proof that the file is included on chain). It also has functionality to return active deals made with a particular CID, as well as deals that are about to expire.
 
 The API frontend performs the following:
+
 - **Allows users to register various jobs to be performed by the service**.
   - **Replication**: When building a storage solution with FVM on Filecoin, storage deals need to be replicated across geo location, policy sizes and reputation. Replication deals ensure that data can be replicated N times across a number of storage providers.
   - **Renewal**: When building storage solutions with FVM on Filecoin, storage deals need to be live for a long time. This service should be able to take an existing deal and renew it with the same or a different storage provider.
@@ -179,6 +187,7 @@ yarn hardhat submit-raas --contract 0xd928b92E6028463910b2005d118C2edE16C38a2a -
 
 
 Few things to keep in mind while using the Lighthouse Raas service:
+
 - The params for renewal and repair have been decided by lighthouse universally for all the deals, thus giving different params would not modify those params. This is done to handle these jobs together easily for large number of cids.
 - The cid uploaded for raas service must be pinned to IPFS so as to be retrieved by Lighthouse Deal Engine to execute raas jobs.
 - Their is maxReplication param in LighthouseDealStatus contract which is currently set to 2 for both Calibrationnet testnet and Filecoin Mainnet. This means that you can only replicate your deal to 2 different miners using Lighthouse Raas service. This would be increased soon.

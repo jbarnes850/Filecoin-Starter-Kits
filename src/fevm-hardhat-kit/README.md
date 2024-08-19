@@ -1,5 +1,7 @@
 # FEVM Hardhat Kit
 
+This is a comprehensive toolkit for developing and deploying smart contracts on the Filecoin Virtual Machine (FVM) using Hardhat. It provides a robust set of tools, contracts, and examples to streamline your development process. For a detailed overview of the kit's structure and deployment workflow, refer to the flowcharts in ["FEVM Hardhat Kit - Main Components.md"](./FEVM%20Hardhat%20Kit%20-%20Main%20Components.md) and ["FEVM Hardhat Kit - Contract Deployment Flow.md"](./FEVM%20Hardhat%20Kit%20-%20Contract%20Deployment%20Flow.md). These visual guides offer a clear understanding of the kit's architecture and the step-by-step process for deploying contracts on the FVM.
+
 ## Cloning the Repo
 
 Open up your terminal (or command prompt) and navigate to a directory you would like to store this code on. Once there type in the following command:
