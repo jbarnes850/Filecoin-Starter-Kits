@@ -72,23 +72,25 @@ Comprehensive documentation for this project can be found in the [docs](main/doc
 ## Quick Start Guide
 
 1. Clone this repository:
+
    ```
    git clone https://github.com/filecoin-project/filecoin-starter-kits.git
    cd filecoin-starter-kits
    ```
 
 2. Initialize and update the submodules:
+
    ```
    git submodule update --init --recursive
    ```
 
 3. Choose a starter kit and navigate to its directory:
+
    ```
    cd src/<starter-kit-name>
    ```
 
 4. Follow the specific setup instructions in the starter kit's README.md file.
-
 
 ## Updating Dependencies
 
@@ -96,6 +98,7 @@ To keep all starter kits up-to-date, we've provided a script to update dependenc
 
 1. Ensure you're in the root directory of the repository.
 2. Run the update script:
+
    ```
    ./update-dependencies.sh
    ```
@@ -133,6 +136,7 @@ We welcome contributions to improve the starter kits or add new ones! Please see
 ## Support
 
 If you need help or have questions:
+
 - Open an issue in this repository
 - Join our [Discord community](https://discord.gg/filecoin)
 - Visit the [Filecoin documentation](https://docs.filecoin.io/)

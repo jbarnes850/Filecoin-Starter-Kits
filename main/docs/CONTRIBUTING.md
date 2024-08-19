@@ -21,6 +21,7 @@ Our goal is to make your experience as a contributor enjoyable and rewarding. So
 Before diving into contributions, it's crucial to understand the Filecoin network and its ecosystem. Filecoin is a decentralized storage network designed to store humanity's most important information. As a contributor, you'll be helping developers interact with this groundbreaking technology.
 
 Key resources:
+
 - [Filecoin Documentation](https://docs.filecoin.io/)
 - [Filecoin Specification](https://spec.filecoin.io/)
 - [FVM (Filecoin Virtual Machine)](https://fvm.filecoin.io/)
@@ -28,27 +29,37 @@ Key resources:
 ## Getting Started
 
 1. **Fork the repository**: Click the 'Fork' button at the top right of this repository.
-2. **Clone your fork**: 
+2. **Clone your fork**:
+
    ```
    git clone https://github.com/YOUR-USERNAME/filecoin-starter-kits.git
    ```
+
 3. **Set up upstream remote**:
+
    ```
    git remote add upstream https://github.com/ORIGINAL-OWNER/filecoin-starter-kits.git
    ```
-4. **Create a new branch**: 
+
+4. **Create a new branch**:
+
    ```
    git checkout -b feature/your-feature-name
    ```
+
 5. **Make your changes**: Implement your feature or bug fix.
 6. **Commit your changes**:
+
    ```
    git commit -am 'Add some feature'
    ```
+
 7. **Push to your fork**:
+
    ```
    git push origin feature/your-feature-name
    ```
+
 8. **Submit a pull request**: Go to the original repository and click 'New pull request'.
 
 ## Development Environment Setup
