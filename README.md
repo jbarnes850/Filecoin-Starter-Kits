@@ -1,6 +1,12 @@
 # Filecoin Starter Kits
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![Version](https://img.shields.io/github/package-json/v/filecoin-project/filecoin-starter-kits)
+![License](https://img.shields.io/github/license/filecoin-project/filecoin-starter-kits)
+![Last Commit](https://img.shields.io/github/last-commit/filecoin-project/filecoin-starter-kits)
+![Contributors](https://img.shields.io/github/contributors/filecoin-project/filecoin-starter-kits)
+![Issues](https://img.shields.io/github/issues/filecoin-project/filecoin-starter-kits)
+![Pull Requests](https://img.shields.io/github/issues-pr/filecoin-project/filecoin-starter-kits)
+[![Twitter Follow](https://img.shields.io/twitter/follow/Filecoin?style=social)](https://twitter.com/Filecoin)
 
 Welcome to the Filecoin Starter Kits repository! This project provides developers with a comprehensive set of tools and examples to build on the Filecoin network. Whether you're new to Filecoin or an experienced developer, you'll find resources here to jumpstart your project.
 
