@@ -11,6 +11,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import QuickStart from 'src/app/components/QuickStart';
 
 interface StarterKit {
   id: string;
@@ -365,95 +366,195 @@ contract SimpleStorage {
     kit.description.toLowerCase().includes(state.searchQuery.toLowerCase())
   );
 
-  const renderKitInterface = (kitId: string) => {
-    const kit = starterKits.find(k => k.id === kitId);
+  const renderStarterKits = () => {
+    return filteredKits.map((kit) => (
+      <motion.div
+        key={kit.id}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Card
+          className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 hover:shadow-lg transition-all cursor-pointer overflow-hidden"
+          onClick={() => handleKitChange(kit.id)}
+        >
+          <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <CardTitle className="text-xl flex items-center justify-between">
+              {kit.name}
+              <Link href={kit.repo} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                <Github className="h-5 w-5 text-gray-200 hover:text-white transition-colors" />
+              </Link>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-4">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              {kit.description}
+            </p>
+          </CardContent>
+          <CardFooter className="bg-gray-100 dark:bg-gray-600 p-2 text-xs text-gray-500 dark:text-gray-400">
+            Click to view details
+          </CardFooter>
+        </Card>
+      </motion.div>
+    ));
+  };
+
+  const renderActiveKitDetails = () => {
+    const kit = starterKits.find(k => k.id === state.activeKit);
     if (!kit) return null;
 
     return (
-      <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 mt-8">
-        <CardHeader className="space-y-4">
-          <CardTitle className="text-3xl text-gray-900 dark:text-gray-100">{kit.name}</CardTitle>
-          <CardDescription className="text-xl text-gray-600 dark:text-gray-400">{kit.description}</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-8">
-          <section>
-            <h4 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Key Components</h4>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 pl-4">
-              {kit.components.map((component, index) => (
-                <li key={index} className="text-lg">{component}</li>
-              ))}
-            </ul>
-          </section>
-
-          <section>
-            <h4 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Deployment Workflow</h4>
-            <ol className="list-decimal list-inside text-gray-700 dark:text-gray-300 space-y-2 pl-4">
-              {kit.workflowSteps.map((step, index) => (
-                <li key={index} className="text-lg">{step}</li>
-              ))}
-            </ol>
-          </section>
-
-          <section>
-            <h4 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Architecture Diagram</h4>
-            <div className="relative h-96 w-full">
-              <Image
-                src={`/images/${kitId}-architecture.png`}
-                alt={`${kit.name} Architecture Diagram`}
-                layout="fill"
-                objectFit="contain"
-                className="rounded-lg"
-              />
-            </div>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-              <Link href={`/docs/${kitId}-main-components.md`} className="text-blue-500 hover:underline">
-                View full architecture details
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Card className="bg-white dark:bg-gray-800 mt-8 shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">{kit.name}</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-400">{kit.description}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <section>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Key Components</h4>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                {kit.components.map((component, index) => (
+                  <li key={index}>{component}</li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Workflow Steps</h4>
+              <ol className="list-decimal list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                {kit.workflowSteps.map((step, index) => (
+                  <li key={index}>{step}</li>
+                ))}
+              </ol>
+            </section>
+            <section>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Key Code Snippet</h4>
+              <SyntaxHighlighter 
+                language={kit.keyCodeSnippet.language} 
+                style={tomorrow}
+                className="text-sm rounded-lg"
+              >
+                {kit.keyCodeSnippet.code}
+              </SyntaxHighlighter>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{kit.keyCodeSnippet.explanation}</p>
+            </section>
+            <section>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Interactive Demo</h4>
+              {kit.interactiveDemo}
+            </section>
+          </CardContent>
+          <CardFooter className="space-x-4">
+            <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 text-white">
+              <Link href={kit.repo} target="_blank" rel="noopener noreferrer">
+                Explore Kit
               </Link>
-            </p>
-          </section>
+            </Button>
+            <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white">
+              <Link href={`/tutorials/${kit.id}`}>
+                Interactive Tutorial
+              </Link>
+            </Button>
+          </CardFooter>
+        </Card>
+      </motion.div>
+    );
+  };
 
-          <section>
-            <h4 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Value Proposition</h4>
-            <p className="text-lg text-gray-700 dark:text-gray-300">{kit.valueProposition}</p>
-          </section>
-
-          <section>
-            <h4 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Key Code Snippet</h4>
-            <SyntaxHighlighter 
-              language={kit.keyCodeSnippet.language} 
-              style={tomorrow}
-              className="text-lg rounded-lg"
-            >
-              {kit.keyCodeSnippet.code}
-            </SyntaxHighlighter>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">{kit.keyCodeSnippet.explanation}</p>
-          </section>
-
-          <section>
-            <h4 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Interactive Demo</h4>
-            {kit.interactiveDemo}
-          </section>
+  const renderToolsContent = () => {
+    return (
+      <Card className="bg-white dark:bg-gray-800 shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">Developer Tools</CardTitle>
+          <CardDescription className="text-gray-600 dark:text-gray-400">Access Filecoin development resources</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {[
+              { name: "Filecoin Documentation", url: "https://docs.filecoin.io/" },
+              { name: "Filecoin GitHub Repositories", url: "https://github.com/filecoin-project" },
+              { name: "FVM Data Depot", url: "https://data.lighthouse.storage/" },
+              { name: "Filecoin Faucet", url: "https://faucet.calibnet.chainsafe-fil.io/" },
+            ].map((tool) => (
+              <Button key={tool.name} asChild size="lg" className="w-full bg-blue-500 hover:bg-blue-600 text-white">
+                <Link href={tool.url} target="_blank" rel="noopener noreferrer">
+                  {tool.name}
+                </Link>
+              </Button>
+            ))}
+          </div>
         </CardContent>
-        <CardFooter className="space-x-4 mt-8">
-          <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 text-white text-lg">
-            <Link href={kit.repo} target="_blank" rel="noopener noreferrer">
-              Explore Kit
-            </Link>
-          </Button>
-          <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white text-lg">
-            <Link href={`/tutorials/${kitId}`}>
-              Interactive Tutorial
-            </Link>
-          </Button>
-        </CardFooter>
       </Card>
     );
   };
 
+  const renderLearnContent = () => {
+    return (
+      <Card className="bg-white dark:bg-gray-800 shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">Learn Filecoin</CardTitle>
+          <CardDescription className="text-gray-600 dark:text-gray-400">Educational resources and tutorials</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            {[
+              {
+                title: "Filecoin Basics",
+                description: "Learn about Filecoin's decentralized storage network and its core concepts.",
+                link: "https://docs.filecoin.io/basics/what-is-filecoin/",
+              },
+              {
+                title: "Smart Contract Development",
+                description: "Dive into developing smart contracts on the Filecoin Virtual Machine (FVM).",
+                link: "https://docs.filecoin.io/smart-contracts/fundamentals/basics/",
+              },
+            ].map((resource) => (
+              <Card key={resource.title} className="bg-gray-50 dark:bg-gray-700">
+                <CardHeader>
+                  <CardTitle className="text-xl text-gray-900 dark:text-gray-100">{resource.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700 dark:text-gray-300">{resource.description}</p>
+                </CardContent>
+                <CardFooter>
+                  <Button asChild size="sm" className="bg-blue-500 hover:bg-blue-600 text-white">
+                    <Link href={resource.link} target="_blank" rel="noopener noreferrer">
+                      Start Learning
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  const renderDashboardContent = () => {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <QuickStart />
+          {renderStarterKits()}
+        </div>
+      </motion.div>
+    );
+  };
+
   return (
-    <div className={`container mx-auto px-4 py-8 min-h-screen flex flex-col ${state.isDarkMode ? 'dark' : ''}`}>
-      <header className="mb-8">
-        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+    <div className={`min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 ${state.isDarkMode ? 'dark' : ''}`}>
+      <header className="sticky top-0 bg-white dark:bg-gray-800 shadow-md z-10">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -463,176 +564,82 @@ contract SimpleStorage {
             <Image
               src="/Filecoin.png"
               alt="Filecoin Logo"
-              width={60}
-              height={60}
+              width={40}
+              height={40}
               className="mr-4"
             />
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100">Filecoin Starter Kits</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">Filecoin Starter Kits</h1>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4"
+            className="flex items-center space-x-4"
           >
-            <Button onClick={toggleTheme} size="lg" className="w-full sm:w-auto bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
-              {state.isDarkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+            <Button onClick={toggleTheme} size="sm" variant="outline" className="bg-transparent">
+              {state.isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
-            <div className="relative w-full sm:w-64">
+            <div className="relative">
               <input
                 type="text"
                 placeholder="Search kits..."
                 value={state.searchQuery}
                 onChange={handleSearch}
-                className="w-full pl-10 pr-4 py-2 text-lg border rounded-full text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800"
+                className="w-full pl-10 pr-4 py-2 text-sm border rounded-full text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 transition-all"
               />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             </div>
-            <Button size="lg" className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white text-lg">
-              Explore Filecoin Network
+            <Button size="sm" className="bg-blue-500 hover:bg-blue-600 text-white transition-colors">
+              Explore Network
             </Button>
           </motion.div>
         </div>
       </header>
 
-      <Tabs defaultValue="dashboard" className="flex-grow">
-        <TabsList className="flex w-full mb-8 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-x-auto">
-          {['dashboard', 'tools', 'learn'].map((tab, index) => (
-            <motion.div
-              key={tab}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="flex-1"
-            >
+      <main className="container mx-auto px-4 py-8">
+        <Tabs defaultValue="dashboard" className="space-y-8">
+          <TabsList className="flex space-x-2 bg-white dark:bg-gray-800 p-1 rounded-lg shadow-md sticky top-16 z-10">
+            {['dashboard', 'tools', 'learn'].map((tab) => (
               <TabsTrigger
+                key={tab}
                 value={tab}
-                className="w-full py-4 text-lg text-gray-700 dark:text-gray-300 data-[state=active]:bg-blue-500 data-[state=active]:text-white rounded-lg"
+                className="flex-1 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <span className="flex items-center justify-center">
-                  {tab === 'dashboard' && <Home className="mr-2 h-5 w-5" />}
-                  {tab === 'tools' && <Wrench className="mr-2 h-5 w-5" />}
-                  {tab === 'learn' && <Book className="mr-2 h-5 w-5" />}
+                  {tab === 'dashboard' && <Home className="mr-2 h-4 w-4" />}
+                  {tab === 'tools' && <Wrench className="mr-2 h-4 w-4" />}
+                  {tab === 'learn' && <Book className="mr-2 h-4 w-4" />}
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </span>
               </TabsTrigger>
-            </motion.div>
-          ))}
-        </TabsList>
+            ))}
+          </TabsList>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
           <TabsContent value="dashboard">
-            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 mb-8">
-              <CardHeader>
-                <CardTitle className="text-2xl md:text-3xl text-gray-900 dark:text-gray-100">Starter Kits Overview</CardTitle>
-                <CardDescription className="text-lg md:text-xl text-gray-600 dark:text-gray-400">Jumpstart your Filecoin journey with our comprehensive toolkits - choose your path and start building!</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredKits.map((kit) => (
-                    <Card key={kit.id} className="bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer" onClick={() => handleKitChange(kit.id)}>
-                      <CardHeader>
-                        <CardTitle className="text-2xl text-gray-900 dark:text-gray-100 flex items-center justify-between">
-                          {kit.name}
-                          <Link href={kit.repo} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                            <Github className="h-6 w-6 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors" />
-                          </Link>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-lg text-gray-600 dark:text-gray-400">
-                          {kit.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            {renderKitInterface(state.activeKit)}
+            {renderDashboardContent()}
           </TabsContent>
 
           <TabsContent value="tools">
-            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-3xl text-gray-900 dark:text-gray-100">Developer Tools</CardTitle>
-                <CardDescription className="text-xl text-gray-600 dark:text-gray-400">Access Filecoin development resources</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 text-white w-full text-lg">
-                    <Link href="https://docs.filecoin.io/" target="_blank" rel="noopener noreferrer">
-                      Filecoin Documentation
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 text-white w-full text-lg">
-                    <Link href="https://github.com/filecoin-project" target="_blank" rel="noopener noreferrer">
-                      Filecoin GitHub Repositories
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 text-white w-full text-lg">
-                    <Link href="https://data.lighthouse.storage/" target="_blank" rel="noopener noreferrer">
-                      FVM Data Depot
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 text-white w-full text-lg">
-                    <Link href="https://faucet.calibnet.chainsafe-fil.io/" target="_blank" rel="noopener noreferrer">
-                      Filecoin Faucet
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {renderToolsContent()}
+            </motion.div>
           </TabsContent>
 
           <TabsContent value="learn">
-            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-3xl text-gray-900 dark:text-gray-100">Learn Filecoin</CardTitle>
-                <CardDescription className="text-xl text-gray-600 dark:text-gray-400">Educational resources and tutorials</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-8">
-                  <Card className="bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600">
-                    <CardHeader>
-                      <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">Filecoin Basics</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-lg text-gray-700 dark:text-gray-300">Learn about Filecoin&apos;s decentralized storage network and its core concepts.</p>
-                    </CardContent>
-                    <CardFooter>
-                      <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 text-white text-lg">
-                        <Link href="https://docs.filecoin.io/basics/what-is-filecoin/" target="_blank" rel="noopener noreferrer">
-                          Start Learning
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                  <Card className="bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600">
-                    <CardHeader>
-                      <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">Smart Contract Development</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-lg text-gray-700 dark:text-gray-300">Dive into developing smart contracts on the Filecoin Virtual Machine (FVM).</p>
-                    </CardContent>
-                    <CardFooter>
-                      <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 text-white text-lg">
-                        <Link href="https://docs.filecoin.io/smart-contracts/fundamentals/basics/" target="_blank" rel="noopener noreferrer">
-                          Explore FVM
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </div>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {renderLearnContent()}
+            </motion.div>
           </TabsContent>
-        </motion.div>
-      </Tabs>
+        </Tabs>
+      </main>
     </div>
   );
 }
