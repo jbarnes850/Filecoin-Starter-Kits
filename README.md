@@ -41,7 +41,7 @@ Please refer to each starter kit's individual README.md for specific requirement
 
 ## Starter Kits
 
-Each starter kit is maintained as a separate repository within the `src` directory of this project. Here are the included kits, each accompanied by a flowchart and architecture diagram to visualize the experience:
+Each starter kit is maintained as a separate repository within the `src` directory of this project. Here are the included kits:
 
 1. **FEVM Hardhat Kit**: A starter kit for building smart contracts on Filecoin using Hardhat.
    - Source: [fevm-hardhat-kit](https://github.com/filecoin-project/fevm-hardhat-kit)
@@ -69,7 +69,6 @@ Comprehensive documentation for this project can be found in the [docs](main/doc
 
 - [Contributing Guide](/main/docs/CONTRIBUTING.md)
 - [Architecture Overview](/main/docs/ARCHITECTURE.md)
-- [Frontend Development Guide](/main/docs/FRONTEND_GUIDE.md)
 
 ## Quick Start Guide
 
@@ -94,16 +93,6 @@ Comprehensive documentation for this project can be found in the [docs](main/doc
 
 4. Follow the specific setup instructions in the starter kit's README.md file.
 
-5. To use the unified frontend:
-
-   ```
-   cd unified-frontend
-   npm install
-   npm run dev
-   ```
-
-   This will install the dependencies and start the development server for the unified frontend.
-
 ## Updating Dependencies
 
 To keep all starter kits up-to-date, we've provided a script to update dependencies across all projects:
@@ -123,20 +112,6 @@ Note: After updating dependencies, make sure to test each starter kit to ensure 
 
 - `main` branch: Contains all docs and shared resources.
 - `src/`: Contains each starter kit as a separate repository.
-- `unified-frontend/`: A comprehensive, unified frontend application showcasing all starter kits and providing interactive tutorials.
-
-## Frontend Enhancements
-
-The frontend has been enhanced to provide a more comprehensive and interactive experience for developers:
-
-- Detailed interfaces for each starter kit, including:
-  - Key components
-  - Deployment workflow visualization
-  - Architecture diagrams
-- Interactive tutorials and step-by-step guides
-- Quick access to GitHub repositories
-
-These enhancements aim to help developers, especially those new to Filecoin, quickly understand the deployment workflow and journey of each starter kit.
 
 ## Getting Test Tokens
 
