@@ -1,6 +1,6 @@
 # Filecoin Starter Kits
 
-![Version](https://img.shields.io/badge/Version-0.1.0-blue.svg)
+![Version](https://img.shields.io/badge/Version-0.2.0-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 [![Twitter Follow](https://img.shields.io/twitter/follow/Filecoin?style=social)](https://twitter.com/Filecoin)
 
