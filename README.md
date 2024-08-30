@@ -94,6 +94,16 @@ Comprehensive documentation for this project can be found in the [docs](main/doc
 
 4. Follow the specific setup instructions in the starter kit's README.md file.
 
+5. To use the unified frontend:
+
+   ```
+   cd unified-frontend
+   npm install
+   npm run dev
+   ```
+
+   This will install the dependencies and start the development server for the unified frontend.
+
 ## Updating Dependencies
 
 To keep all starter kits up-to-date, we've provided a script to update dependencies across all projects:
@@ -102,7 +112,7 @@ To keep all starter kits up-to-date, we've provided a script to update dependenc
 2. Run the update script:
 
    ```
-   ./update-dependencies.sh
+   ./scripts/update-dependencies.sh
    ```
 
 This script will go through each starter kit in the `src` directory and update its dependencies.
@@ -113,7 +123,20 @@ Note: After updating dependencies, make sure to test each starter kit to ensure 
 
 - `main` branch: Contains all docs and shared resources.
 - `src/`: Contains each starter kit as a separate repository.
-- `component-library/`: A library of reusable frontend components (in development).
+- `unified-frontend/`: A comprehensive, unified frontend application showcasing all starter kits and providing interactive tutorials.
+
+## Frontend Enhancements
+
+The frontend has been enhanced to provide a more comprehensive and interactive experience for developers:
+
+- Detailed interfaces for each starter kit, including:
+  - Key components
+  - Deployment workflow visualization
+  - Architecture diagrams
+- Interactive tutorials and step-by-step guides
+- Quick access to GitHub repositories
+
+These enhancements aim to help developers, especially those new to Filecoin, quickly understand the deployment workflow and journey of each starter kit.
 
 ## Getting Test Tokens
 
