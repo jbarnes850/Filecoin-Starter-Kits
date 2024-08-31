@@ -72,6 +72,13 @@ Comprehensive documentation for this project can be found in the [docs](main/doc
 
 ## Quick Start Guide
 
+1. Visit the [Filecoin Developer Console](https://filecoin-developer-console.vercel.app/).
+2. Explore the available starter kits in the Dashboard section.
+3. Select a kit that fits your project needs.
+4. Follow the interactive setup guide provided on the console.
+
+If you prefer to set up the starter kit locally, follow these steps:
+
 1. Clone this repository:
 
    ```
